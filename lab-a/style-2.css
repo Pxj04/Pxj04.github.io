@@ -1,3 +1,130 @@
+/* WERSJA 2: pastelowa. Ten sam HTML, portrety obok opisów. */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
-  background-color: #ecfbe6;
+    margin: 0;
+    background: #fff7fa;
+    color: #573b50;
+    font-family: Georgia, serif;
+    line-height: 1.8;
+}
+header {
+    min-height: 70vh;
+    padding: 80px 7%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, #ffe6ee, #f1e8ff, #fff7ed);
+    border-bottom: 2px solid #eab6c9;
+}
+h1 {
+    max-width: 850px;
+    margin: 0 auto 40px;
+    font-size: clamp(42px, 6vw, 76px);
+    line-height: 1.2;
+    color: #a44e77;
+    font-style: italic;
+    font-weight: normal;
+}
+nav ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+nav a {
+    display: block;
+    padding: 9px 18px;
+    background: #fffafa;
+    color: #884265;
+    border: 1px solid #d6a8bb;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+nav a:hover, nav a:focus-visible {
+    background: #f8d9e7;
+    transform: translateY(-3px);
+}
+main { max-width: 1250px; margin: 0 auto; padding: 60px 35px; }
+.kierowca {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    align-items: center;
+    gap: 45px;
+    padding: 45px;
+    margin-bottom: 60px;
+    background: #ffffff;
+    border: 1px solid #e8b9cc;
+    border-radius: 28px;
+    box-shadow: 0 10px 30px rgba(151, 87, 122, 0.1);
+}
+/* Co druga sekcja ma zdjęcie po drugiej stronie. */
+.kierowca:nth-child(even) {
+    grid-template-columns: 1.3fr 1fr;
+    background: #f8f1ff;
+}
+.kierowca:nth-child(even) .portret { grid-column: 2; grid-row: 1; }
+.kierowca:nth-child(even) .opis { grid-column: 1; grid-row: 1; }
+.portret {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border: 9px solid #fff8fb;
+    border-radius: 150px 150px 24px 24px;
+    box-shadow: 0 0 0 1px #cfa0b8, 0 12px 22px rgba(99, 56, 78, 0.15);
+    transition: transform 0.3s;
+}
+.portret:hover { transform: rotate(-1deg); }
+/* Oscar jest po prawej stronie zdjęcia, więc przesuwamy kadr. */
+#oscar .portret { object-position: 80% center; }
+h2 {
+    margin: 0 0 24px;
+    color: #a44e77;
+    font-size: clamp(30px, 3vw, 42px);
+    line-height: 1.25;
+    font-weight: normal;
+}
+h3 {
+    margin: 24px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px dotted #cc8ea8;
+    color: #795b91;
+    font-size: 21px;
+    font-style: italic;
+}
+p { margin: 0 0 20px; font-size: 16px; }
+footer {
+    padding: 35px;
+    background: #f3dce9;
+    color: #78475f;
+    text-align: center;
+    border-top: 1px solid #d6a8bb;
+}
+footer a { display: block; margin-top: 12px; color: #884265; font-style: italic; }
+@media (max-width: 700px) {
+    header { padding: 60px 20px; }
+    main { padding: 35px 16px; }
+    .kierowca, .kierowca:nth-child(even) {
+        grid-template-columns: 1fr;
+        padding: 25px;
+        gap: 28px;
+        margin-bottom: 35px;
+    }
+    .kierowca:nth-child(even) .portret, .kierowca:nth-child(even) .opis {
+        grid-column: auto;
+        grid-row: auto;
+    }
+    .portret { max-width: 400px; margin: 0 auto; }
+    nav a { font-size: 14px; padding: 8px 13px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    nav a, .portret { transition: none; }
 }
