@@ -56,11 +56,40 @@ nav a:hover, nav a:focus-visible {
 .kierowca {
     min-height: 100vh;
     padding: 80px 7%;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 12%;
     align-items: center;
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     border-top: 1px solid #43434b;
+}
+/* Nazwisko i opis są osobnymi elementami siatki. */
+.tekst { display: contents; }
+.nazwisko {
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    font-style: italic;
+    font-weight: 900;
+    font-size: clamp(38px, 5vw, 76px);
+    letter-spacing: -2px;
+    text-shadow: 0 3px 12px #000;
+    line-height: 1;
+}
+#max .nazwisko { grid-column: 1; grid-row: 1; }
+#max .opis { grid-column: 2; grid-row: 1; }
+#charles .nazwisko { grid-column: 2; grid-row: 1; text-align: right; }
+#charles .opis { grid-column: 1; grid-row: 1; }
+/* U tych kierowców tekst jest po prawej, zdjęcie po lewej. */
+#kubica .nazwisko, #lewis .nazwisko, #oscar .nazwisko { grid-column: 2; align-self: end; margin: 0; }
+#kubica .opis, #lewis .opis, #oscar .opis { grid-column: 2; align-self: start; }
+.wyroznienie {
+    grid-column: 1 / -1;
+    text-align: center;
+    font: italic bold clamp(28px, 4vw, 54px) "Trebuchet MS", sans-serif;
+    color: #ff7192;
+    text-transform: uppercase;
+    letter-spacing: 3px;
 }
 /* Przyciemnienie tylko w obszarze tekstu. */
 .opis {
@@ -79,7 +108,8 @@ h2 {
     text-transform: uppercase;
 }
 h3 { margin: 26px 0 10px; font-size: 20px; letter-spacing: 1px; }
-p { margin: 0 0 18px; font-size: 17px; color: #f4f4f8; }
+.opis h3:first-child { margin-top: 0; }
+p { margin: 0 0 18px; font-size: 16px; color: #f4f4f8; }
 /* Zmieniamy tło i akcent kolorystyczny dla danego kierowcy. */
 #max { background-image: url("assets/max-tlo.jpg"); }
 #max h2 { color: #65a9ff; }
@@ -87,13 +117,25 @@ p { margin: 0 0 18px; font-size: 17px; color: #f4f4f8; }
 #charles { background-image: url("assets/charles-tlo.webp"); }
 #charles h2 { color: #ff5368; }
 #charles .opis { border-color: #ff5368; }
-#kubica { background-image: url("assets/kubica-tlo.jpeg"); }
+#kubica {
+    background-image: url("assets/kubica-tlo.jpeg");
+    background-size: min(65vw, 764px) auto;
+    background-position: left center;
+}
 #kubica h2 { color: #ff7192; }
 #kubica .opis { border-color: #ff7192; }
-#lewis { background-image: url("assets/lewis-tlo.jpg"); }
+#lewis {
+    background-image: url("assets/lewis-tlo.jpg");
+    background-size: min(75vw, 1024px) auto;
+    background-position: left center;
+}
 #lewis h2 { color: #d8ff45; }
 #lewis .opis { border-color: #d8ff45; }
-#oscar { background-image: url("assets/oscar-tlo.jpg"); }
+#oscar {
+    background-image: url("assets/oscar-tlo.jpg");
+    background-size: min(75vw, 1920px) auto;
+    background-position: left center;
+}
 #oscar h2 { color: #ffaf46; }
 #oscar .opis { border-color: #ffaf46; }
 footer {
@@ -108,12 +150,22 @@ footer a { display: block; margin-top: 12px; color: #ffffff; }
     to { opacity: 1; transform: translateY(0); }
 }
 /* Układ telefonu wymagany w laboratorium. */
-@media (max-width: 600px) {
+@media (max-width: 800px) {
     header { padding: 50px 20px; }
     h1 { letter-spacing: -1px; }
     nav ul { gap: 10px; }
     nav a { padding: 8px 13px; font-size: 14px; }
-    .kierowca { padding: 45px 16px; }
+    .kierowca {
+        display: block;
+        padding: 240px 16px 45px;
+    }
+    #max, #charles, #kubica, #lewis, #oscar {
+        background-size: 100% auto;
+        background-position: center top;
+    }
+    .kierowca .nazwisko { margin: 0 0 24px; }
+    #charles .nazwisko { text-align: left; }
+    .wyroznienie { display: block; margin-bottom: 24px; text-align: left; }
     .opis { padding: 22px; }
     p { font-size: 16px; }
 }

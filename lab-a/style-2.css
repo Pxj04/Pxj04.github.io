@@ -70,7 +70,17 @@ main { max-width: 1250px; margin: 0 auto; padding: 60px 35px; }
     background: #f8f1ff;
 }
 .kierowca:nth-child(even) .portret { grid-column: 2; grid-row: 1; }
-.kierowca:nth-child(even) .opis { grid-column: 1; grid-row: 1; }
+.kierowca:nth-child(even) .tekst { grid-column: 1; grid-row: 1; }
+.tekst { min-width: 0; }
+.wyroznienie {
+    display: block;
+    margin-bottom: 14px;
+    color: #795b91;
+    font-size: 18px;
+    font-style: italic;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
 .portret {
     display: block;
     width: 100%;
@@ -117,7 +127,7 @@ footer a { display: block; margin-top: 12px; color: #884265; font-style: italic;
         gap: 28px;
         margin-bottom: 35px;
     }
-    .kierowca:nth-child(even) .portret, .kierowca:nth-child(even) .opis {
+    .kierowca:nth-child(even) .portret, .kierowca:nth-child(even) .tekst {
         grid-column: auto;
         grid-row: auto;
     }
