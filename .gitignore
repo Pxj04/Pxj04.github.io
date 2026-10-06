@@ -1,0 +1,19 @@
+# Ustawienia IDE
+.idea/
+.vscode/
+*.iml
+
+# Instrukcje laboratoryjne i tablice inspiracji
+*.docx
+*.pur
+
+# Pliki tymczasowe i podglądy
+.preview*.html
+*.tmp
+*.bak
+~$*
+
+# Pliki systemowe
+Thumbs.db
+Desktop.ini
+.DS_Store
