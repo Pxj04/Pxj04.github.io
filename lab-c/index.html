@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Adrianna Świder (55748) - IS LAB C</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.12/css/weather-icons.min.css">
+
+</head>
+<body>
+<main>
+<div id="weather-search-params">
+    <h1>Rest Weather</h1>
+    <label for="locationInput">Miasto</label>
+    <div class="search-row">
+        <input type="text" value="Szczecin, Poland" id="locationInput">
+        <button id="checkButton">Pogoda</button>
+    </div>
+</div>
+
+<div id="weather-results-container">
+    <section>
+        <h2>Aktualna pogoda</h2>
+        <div id="current-weather"></div>
+    </section>
+    <section>
+        <h2>Prognoza</h2>
+        <div id="forecast"></div>
+    </section>
+</div>
+</main>
+</body>
+</html>
