@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Wpisy · Notes{% endblock %}
+
+{% block body %}
+    <header class="notes-list-header">
+        <div>
+            <h1 class="h2 mb-1">Wpisy</h1>
+            <p class="mb-0">Przeglądaj i edytuj zapisane notatki.</p>
+        </div>
+
+        <span class="notes-count">Liczba wpisów: {{ posts|length }}</span>
+    </header>
+
+    <div class="table-responsive notes-table-wrap">
+        <table class="table table-hover align-middle mb-0 notes-table">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Temat</th>
+                <th scope="col">Opis</th>
+                <th scope="col">Akcje</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for post in posts %}
+                <tr>
+                    <td>{{ post.id }}</td>
+                    <td class="fw-semibold">{{ post.subject }}</td>
+                    <td>{{ post.description }}</td>
+                    <td>
+                        <div class="d-flex flex-wrap gap-2">
+                            <a class="btn btn-sm btn-outline-secondary"
+                               href="{{ path('app_post_show', {'id': post.id}) }}">Szczegóły</a>
+                            <a class="btn btn-sm btn-outline-primary"
+                               href="{{ path('app_post_edit', {'id': post.id}) }}">Edytuj</a>
+                        </div>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">Brak wpisów.</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
